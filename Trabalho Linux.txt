@@ -1,0 +1,206 @@
+utilizando o jslinux 
+
+1.Utilize o comando echo para imprimir seu nome no terminal
+
+Resposta: echo "Julio"
+
+2.Utilize o comando echo para salvar seu nome em um arquivo chamado cliente01.txt.
+	Confira o resultado com o comando less.
+
+
+Resposta: echo "Julio" > cliente01.txt
+
+3.Utilize o comando echo para salvar o nome da cidade em que voce nasceu no
+	final do arquivo cliente01.txt.
+
+
+Resposta: echo "Joinville" >> cliente01.txt
+
+4.Crie um novo diretório chamado clientes com o comando mkdir. Confira o
+	resultado com o comando ls.
+
+
+Resposta: mkdir Clientes 
+
+5.Mova o arquivo cliente 01.txt para o diretório clientes. Confira o resultado com
+	os comandos ls e cd.
+
+
+Resposta: mv ~/cliente01.txt clientes
+
+6.Crie uma copia do arquivo cliente 01.txt com o comando cp chamado cliente01.txt.bkp.
+	Confira o resultado.
+
+
+Resposta: cp cliente01.txt cliente01.txt.bkp
+
+7.Remova o arquivo cliente 01.txt com o comando rm. Confira o resultado
+
+Resposta: rm cliente01.txt
+
+8.Crie um arquivo chamado de cliente.script com todos os comandos utilizados acima, na mesma ordem de execucao.
+
+	acima, na mesma ordem de execucao.
+
+Resposta: vi cliente.script
+		echo "Julio Cesar"
+		echo "Julio Cesar" > cliente_01.txt
+		echo "Joinville" >>  cliente_01.txt
+		mkdir clientes
+		mv cliente_01.txt clientes
+		cd clientes
+		cp cliente_01.txt cliente_01.txt_bkp
+		rm cliente_01.txt
+	
+9.Modifique o arquivo cliente.script com o comando chmod para se tornar um
+	arquivo executavel. Execute o arquivo e confira o resultado. 
+	Para executar utilize o comando ./cliente.script. Obs: exclua a pasta clientes antes de executar
+	o script para garantir que esta funcionando corretamente.
+
+Resposta: chmod 777 script.shell
+
+10.Execute o comando cal. Observe o resultado. Execute o comando echo|cal >
+	hoje.txt. Utilize o comandos ls e less para conferir o resultado. O que ocorreu?
+	Qual a func˜ao do operador — ?
+
+Resposta: Ao utilizar o comando echo|cal>hoje.txt, gerou um arquivo tipo txt com nome "hoje" onde
+		contém uma tabela com o mês igual o do horário da máquina. O less permite a
+		visualização do arquivo sem alterá-lo.
+
+11.Utilize o comando wget para baixar o arquivo cidades sc.txt no endereco https:
+	//gist.githubusercontent.com/leandersonandre/c8cba982f42262591be628e5397d1c3f/
+	raw/bd13a3e13823708e477f99f9285f845b292714c6/cidades_sc.txt.
+
+Resposta: wget https://gist.githubusercontent.com/leandersonandre/c8cba982f42262591be628e5397d1c3f/raw/bd13a3e13823708e477f99f9285f845b292714c6/cidades_sc.txt.
+
+12.Execute o comando grep Balneario cidades sc.txt. Qual e o resultado?
+
+Resposta: grep Balneario cidades sc.txt
+		apresentou o resultado da busca por cidades que possuem Balneario no nome:
+		Balneario Camburiu;
+		Balneario Barra do Sul;
+		Balneario Barra Velha;
+		Balneario Itajuba;
+
+13.Execute o comando grep balneario cidades sc.txt. Qual e o resultado?
+
+Resposta: grep balneario cidades_sc.txt não encontrou nenhuma cidade pois o "b" é minúsculo e o programa é case sensitive.
+
+14.Execute o comando grep ”do Sul”cidades sc.txt. Qual e o resultado?
+
+Resposta: grep "do sul", não encontrou nenhuma cidade não se deve usar aspas para procurar.
+
+15.Utilize os comandos cat e grep para filtrar as cidades que comecam com o nome
+Balneario.
+
+Resposta: cat cidades_sc.txt | grep Balneario
+
+	Retornou as cidades:
+	Balneario Camburiu;
+	Balneario Barra do Sul;
+	Balneario Barra Velha;
+	Balneario Itajuba;
+
+16.Crie um arquivo chamado balneario.txt com o conteudo filtrado no problema
+15.
+
+
+Resposta: 	vi balneario.txt
+		Balneario Camburiu;
+		Balneario Barra do Sul;
+		Balneario Barra Velha;
+		Balneario Itajuba;
+
+17.Compacte o arquivo balneario.txt, nomeando de compactado.tar com o comando tar.
+
+Resposta: gzip balneario.txt renomeou para balneario.txt.gz,
+		utilizei gzip pois o tar nao funcionou
+
+18.Descompacte o arquivo compactado.tar com o comando tar.
+
+Resposta:  gzip -d balneario.txt.gz  descompactou para balneario.txt
+
+--------------------------------------------------------
+							
+usando JSLINUX SHELL
+
+1.Crie um script que solicite ao usuario digitar o seu nome e imprime o conteudo
+	no terminal.
+
+Resposta: echo "Informe Seu Nome "
+		read nome
+		echo "Seu nome é: $nome "
+	
+2.Crie um script que multiplique dois numeros que o usuario informar.
+	
+	Primeiro Numero: 4
+	Segundo Numero: 3
+	Resultado: 12
+
+Resposta: echo "Digite um numero:"
+          read x
+	  echo "Digite outro numero:"
+	  read z
+	  y=$(($x*$z))
+	echo "Seu resultado $y"
+
+3.Crie um script que identifique se o usuario informou um numero positivo, negativo ou zero.
+	Numero: 9
+	Positivo
+
+Resposta:  echo "Digite um numero: "
+		read x
+		if [ $x -gt 0 ]; then
+       		#echo "maior que 0"
+		elif [ $x -lt 0 ]; then
+        #echo "menor que zero"
+	else
+        #echo "igual zero"
+	fi
+
+4.Crie um script resolva a tabuada do numero informado pelo usuario.
+	Numero: 2
+	2x0 = 1
+	2x1 = 2
+	...
+	2x10 = 20
+
+Resposta: #!/usr/bash
+		echo "Infome um numero"
+		read x
+		y=0
+		while [ $y -le 10 ]; do
+        	z=$(($x*$y))
+	        echo "$x * $y = $z"
+        	y=$(($y+1))
+		done
+
+5.Crie um script que apresente duas opcoes ao usuario. A primeira opcao devera
+	mostrar o calendario. A segunda opcao deve mostrar a lista de arquivos do
+	diretorio.
+	Opcoes:
+	
+	1: Calendario
+	2: Listas de arquivos do diretorio
+	—–
+	Informe sua opcao: 2
+	—–
+	Mostrar arquivos do diretorio
+	—–
+	arquivo.txt diretorio arquivo2.txt
+
+Resposta:  #!/usr/bash
+		echo "1: Calendrio"
+		echo "2: Listas de arquivos do Diretrio"
+		read x
+		if [ $x -eq 1 ]; then
+    	    echo|cal
+		elif [ $x -eq 2 ]; then
+   	     mkdir Documentos
+    	    cd Documentos
+  	      echo "  " > arquivo1.txt
+    	    echo "  " > arquivo2.txt
+   	     ls
+		else
+   	     echo "Digitado errado"
+		fi
